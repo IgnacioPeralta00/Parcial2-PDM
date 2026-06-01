@@ -56,13 +56,13 @@ fun HomeScreen(
       ) { contentPadding ->
         PullToRefreshBox(
           isRefreshing = uiState.isRefreshing,
-          onRefresh = { /*viewModel.refreshHome()*/ },
+          onRefresh = { homeViewModel.refreshHome() },
           modifier = Modifier
             .padding(contentPadding)
             .fillMaxSize()
         ) {
           ErrorScreen(
-            onRetryClick = { /*viewModel.refresh()*/ },
+            onRetryClick = { homeViewModel.refreshHome() },
             error = uiState.error
           )
         }
@@ -85,7 +85,7 @@ fun HomeScreen(
       ) { contentPadding ->
         PullToRefreshBox(
           isRefreshing = uiState.isRefreshing,
-          onRefresh = { /*viewModel.refresh()*/ },
+          onRefresh = { homeViewModel.refreshHome() },
           modifier = Modifier
             .padding(contentPadding)
             .fillMaxSize()
@@ -98,7 +98,9 @@ fun HomeScreen(
             items(uiState.places) { place ->
               OptionCard(
                 place = place,
-                onPlaceClick = { placeId -> homeViewModel.votePlace(placeId) } )
+                onPlaceClick = { placeId -> homeViewModel.votePlace(placeId) },
+                isVoteScreen = true
+              )
             }
           }
         }

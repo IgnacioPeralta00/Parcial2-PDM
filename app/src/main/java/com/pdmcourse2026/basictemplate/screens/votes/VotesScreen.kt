@@ -49,13 +49,13 @@ fun VotesScreen(
             ) { contentPadding ->
                 PullToRefreshBox(
                     isRefreshing = uiState.isRefreshing,
-                    onRefresh = { /*viewModel.refreshHome()*/ },
+                    onRefresh = { votesViewModel.refreshVotes() },
                     modifier = Modifier
                         .padding(contentPadding)
                         .fillMaxSize()
                 ) {
                     ErrorScreen(
-                        onRetryClick = { /*viewModel.refresh()*/ },
+                        onRetryClick = { votesViewModel.refreshVotes() },
                         error = uiState.error
                     )
                 }
@@ -63,7 +63,7 @@ fun VotesScreen(
         }
         else -> {
             AppScaffold(
-                title = "Vota un lugar",
+                title = "Votos",
                 navigationIcon = {
                     IconButton(
                         onClick = { onBack() },
@@ -78,7 +78,7 @@ fun VotesScreen(
             ) { contentPadding ->
                 PullToRefreshBox(
                     isRefreshing = uiState.isRefreshing,
-                    onRefresh = { /*viewModel.refresh()*/ },
+                    onRefresh = { votesViewModel.refreshVotes() },
                     modifier = Modifier
                         .padding(contentPadding)
                         .fillMaxSize()

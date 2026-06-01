@@ -24,7 +24,7 @@ class HomeViewModel : ViewModel() {
             _uiState.value = _uiState.value.copy(loading = true, error = null)
             placesRepository.getPlaces()
                 .onSuccess { places ->
-                    _uiState.value = HomeUiState(
+                    _uiState.value = _uiState.value.copy(
                         places = places,
                         loading = false
                     )

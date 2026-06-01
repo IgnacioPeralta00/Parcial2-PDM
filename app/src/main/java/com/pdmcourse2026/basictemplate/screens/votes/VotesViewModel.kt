@@ -22,8 +22,9 @@ class VotesViewModel : ViewModel() {
             _uiState.value = _uiState.value.copy(loading = true, error = null)
             placesRepository.getPlaces()
                 .onSuccess { places ->
+                    // Ordenar de mas votos a menos y pasar la UI
                     _uiState.value = VotesUiState(
-                        places = places,
+                        places = places.sortedByDescending { it.votes },
                         loading = false
                     )
                 }
@@ -36,4 +37,24 @@ class VotesViewModel : ViewModel() {
         }
     }
 
+    fun refreshVotes() {
+        viewModelScope.launch {
+            _uiState.value = _uiState.value.copy(isRefreshing = true)
+            placesRepository.getPlaces()
+                .onSuccess { places ->
+                    _uiState.value = VotesUiState(
+                        places = places.sortedByDescending { it.votes },
+                        loading = false,
+                        isRefreshing = false
+                    )
+                }
+                    .onFailure { error ->
+                    _uiState.value = VotesUiState(
+                        error = error.message,
+                        loading = false,
+                        isRefreshing = false
+                    )
+                    }
+        }
+    }
 }

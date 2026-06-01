@@ -40,6 +40,7 @@ object KtorClient {
     // Configuración aplicada a todas las peticiones
     defaultRequest {
       url(BASE_URL)
+      header("apikey", API_TOKEN)
       header(HttpHeaders.Accept, "application/json")
       header(HttpHeaders.ContentType, "application/json")
       header(HttpHeaders.Authorization, "Bearer $API_TOKEN")
