@@ -47,7 +47,7 @@ fun ErrorScreen(
         Spacer(modifier = Modifier.height(24.dp))
 
         Text(
-            text = "¡Vaya! Tenemos un problema",
+            text = "Algo salio mal :(",
             style = MaterialTheme.typography.titleLarge,
             fontWeight = FontWeight.Bold,
             textAlign = TextAlign.Center

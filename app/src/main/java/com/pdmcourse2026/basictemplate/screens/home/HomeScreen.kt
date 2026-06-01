@@ -1,5 +1,6 @@
 package com.pdmcourse2026.basictemplate.screens.home
 
+import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -24,6 +25,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.pdmcourse2026.basictemplate.screens.components.AppScaffold
@@ -37,6 +39,7 @@ fun HomeScreen(
   onNavigateToVotes: () -> Unit
 ) {
   val uiState by homeViewModel.uiState.collectAsState()
+  val context = LocalContext.current
   when {
     uiState.loading -> {
       AppScaffold(title = "") { contentPadding ->
@@ -100,7 +103,8 @@ fun HomeScreen(
             items(uiState.places) { place ->
               OptionCard(
                 place = place,
-                onPlaceClick = { placeId -> homeViewModel.votePlace(placeId) },
+                onPlaceClick = { placeId -> homeViewModel.votePlace(placeId)
+                  Toast.makeText(context, "Voto emitido!", Toast.LENGTH_SHORT).show()},
                 isVoteScreen = false
               )
             }

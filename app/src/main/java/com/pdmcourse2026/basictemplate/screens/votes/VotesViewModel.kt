@@ -13,9 +13,9 @@ class VotesViewModel : ViewModel() {
     private val _uiState = MutableStateFlow(VotesUiState(loading = true))
     val uiState = _uiState.asStateFlow()
 
-    init {
+    /*init {
         loadVotes()
-    }
+    }*/
 
     fun loadVotes() {
         viewModelScope.launch {

@@ -63,7 +63,7 @@ class HomeViewModel : ViewModel() {
         viewModelScope.launch {
             placesRepository.votePlace(placeId)
                 .onSuccess {
-                    loadHome()
+                    //loadHome() no hace nada jeje
                 }
                 .onFailure { error ->
                     _uiState.value = HomeUiState(
