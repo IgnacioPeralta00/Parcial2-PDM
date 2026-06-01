@@ -21,6 +21,7 @@ import com.pdmcourse2026.basictemplate.models.Place
 fun OptionCard(
     place : Place,
     onPlaceClick: (id: Int) -> Unit,
+    isVoteScreen: Boolean = false
 ) {
     ElevatedCard(
         modifier = Modifier
@@ -41,7 +42,13 @@ fun OptionCard(
             )
             Column() {
                 Text(text = place.name)
-                Text(text = "Toca para votar")
+                if(isVoteScreen) {
+                    Text(text = place.votes.toString())
+                }
+                else {
+                    Text(text = "Toca para votar")
+                }
+
             }
         }
     }
