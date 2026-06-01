@@ -7,7 +7,7 @@ import androidx.navigation3.ui.NavDisplay
 import com.pdmcourse2026.basictemplate.screens.home.HomeScreen
 
 @Composable
-fun RankeUCA_App() {
+fun Navigator() {
   val backStack = rememberNavBackStack(Routes.Home)
 
   NavDisplay(

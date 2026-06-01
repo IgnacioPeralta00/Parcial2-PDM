@@ -13,6 +13,8 @@ if (localPropertiesFile.exists()) {
   localProperties.load(FileInputStream(localPropertiesFile))
 }
 
+val apiToken: String = localProperties.getProperty("API_TOKEN") ?: ""
+
 android {
   namespace = "com.pdmcourse2026.basictemplate"
   compileSdk {
@@ -30,7 +32,7 @@ android {
 
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-    //buildConfigField("String", "API_TOKEN", "\"$apiToken\"")
+    buildConfigField("String", "API_TOKEN", "\"$apiToken\"")
   }
 
   buildTypes {
@@ -64,6 +66,8 @@ dependencies {
   implementation(libs.kotlinx.serialization.core)
   implementation(libs.coil.compose)
   implementation(libs.coil.network.okhttp)
+  implementation(libs.androidx.compose.material.icons.core)
+  implementation(libs.androidx.compose.material.icons.extended)
   implementation(libs.androidx.lifecycle.viewmodel.compose)
   implementation(libs.ktor.client.core)
   implementation(libs.ktor.client.okhttp)
