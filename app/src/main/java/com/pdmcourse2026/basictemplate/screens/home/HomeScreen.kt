@@ -91,7 +91,9 @@ fun HomeScreen(
             .fillMaxSize()
         ) {
           LazyColumn(
-            modifier = Modifier.fillMaxSize(),
+            modifier = Modifier
+              .fillMaxSize()
+              .padding(16.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(8.dp)
           ) {
@@ -99,7 +101,7 @@ fun HomeScreen(
               OptionCard(
                 place = place,
                 onPlaceClick = { placeId -> homeViewModel.votePlace(placeId) },
-                isVoteScreen = true
+                isVoteScreen = false
               )
             }
           }
