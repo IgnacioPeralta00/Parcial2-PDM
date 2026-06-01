@@ -103,7 +103,7 @@ fun HomeScreen(
             items(uiState.places) { place ->
               OptionCard(
                 place = place,
-                onPlaceClick = { placeId -> homeViewModel.votePlace(placeId)
+                onPlaceClick = { placeId -> homeViewModel.votePlace(placeId, onVoteSuccess = {})
                   Toast.makeText(context, "Voto emitido!", Toast.LENGTH_SHORT).show()},
                 isVoteScreen = false
               )

@@ -39,17 +39,3 @@ class PlaceApiRepository : PlaceRepository {
 
 }
 
-/*
-override suspend fun postComment(comment: Comment): Comment {
-        val request = PostJsonRequestDto(
-            title = comment.title,
-            body = comment.body,
-            userId = comment.userId
-        )
-        val response : JsonDto = KtorClient.client.post("posts") {
-            setBody(request)
-        }.body()
-        return response.toModel()
-    }
-}
-**/
